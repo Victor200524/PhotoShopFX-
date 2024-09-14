@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="600.0" minWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.photoshopfx.MainController">
+<BorderPane minHeight="600.0" minWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.photoshopfx.MainController">
    <center>
       <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <ImageView fx:id="imagemView" fitHeight="560.0" fitWidth="596.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imagemView" fitHeight="560.0" fitWidth="596.0" onMouseDragged="#onDrawline" onMousePressed="#onDrawline" pickOnBounds="true" preserveRatio="true" />
          </content>
       </ScrollPane>
    </center>
@@ -69,6 +69,7 @@
                   <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btHorizontal" style="-fx-background-image: url('open_horizontal.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center;" />
                   <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btVertical" style="-fx-background-image: url('open_vertical.png'); -fx-background-color: transparente; -fx-background-position: center center; -fx-background-repeat: no-repeat;" />
                   <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btInfo" style="-fx-background-image: url('open_info.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center;" />
+                  <Button fx:id="btDegenhard" maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" onAction="#btDesenhar" style="-fx-background-image: url('desenhar.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center-center;" />
               </items>
                <VBox.margin>
                   <Insets />

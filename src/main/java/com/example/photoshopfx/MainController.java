@@ -11,10 +11,12 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.Button;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
@@ -23,6 +25,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable{
+    @FXML
+    private Button btDesenhar;
     @FXML
     public int num = 1;
     @FXML
@@ -57,7 +61,7 @@ public class MainController implements Initializable{
     public void onAbrir(ActionEvent actionEvent) {
         FileChooser fileChooser;
         fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory((new File("/home/victor/Downloads")));
+        fileChooser.setInitialDirectory((new File("D:\\Downloads")));
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Todas as Imagens", "*.jpeg","*.jpg","*.GIF","*.png")
                 ,new FileChooser.ExtensionFilter("JPG", "*.jpg")
@@ -71,6 +75,7 @@ public class MainController implements Initializable{
             imagemView.setImage(image);
             imagemView.setFitHeight(1000);
             imagemView.setFitWidth(1000); // OU imagemView.setFitWidth(1000)
+            imagemView.setOnMouseDragged(null);
             destravar();
         }
         else{
@@ -252,5 +257,18 @@ public class MainController implements Initializable{
 
     public void btInfo(ActionEvent actionEvent) {
         onSobre(actionEvent);
+    }
+
+    public void onDrawline(MouseEvent dragEvent) {
+        double scalex = imagemView.getImage().getWidth() / imagemView.getBoundsInLocal().getWidth();
+        double scaleY = imagemView.getImage().getHeight() /imagemView.getBoundsInLocal().getHeight();
+        int x = (int) (dragEvent.getX() * scalex);
+        int y = (int) (dragEvent.getY()* scaleY);
+        imagemView.setImage(Conversora. desenharImagemIJ(imagemView.getImage(),x,y));
+        boolean flag = true;
+    }
+
+    public void btDesenhar(ActionEvent dragEvent) {
+        imagemView.setOnMouseDragged(this::onDrawline);
     }
 }

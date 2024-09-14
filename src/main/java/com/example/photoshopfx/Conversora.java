@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
+import static ij.IJ.getProcessor;
+
 public class Conversora {
 
     static public Image tonsCinza(Image image){
@@ -137,5 +139,13 @@ public class Conversora {
         ImageProcessor imageProcessor = imagePlus.getProcessor();
         imageProcessor.dilate();
         return SwingFXUtils.toFXImage(imagePlus.getBufferedImage(),null);
+    }
+    public static Image desenharImagemIJ(Image image, int x, int y) {
+        ImagePlus imagePlus = new ImagePlus();
+        BufferedImage bimg = SwingFXUtils.fromFXImage(image, null);
+        imagePlus.setImage(bimg);
+        ImageProcessor imageProcessor = imagePlus.getProcessor();
+        imageProcessor.fillOval(x,y,25,25);
+        return SwingFXUtils.toFXImage(imagePlus.getBufferedImage(), null);
     }
 }
