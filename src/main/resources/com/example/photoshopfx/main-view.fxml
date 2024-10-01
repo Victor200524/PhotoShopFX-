@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane minHeight="600.0" minWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.photoshopfx.MainController">
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <ImageView fx:id="imagemView" fitHeight="560.0" fitWidth="596.0" onMouseDragged="#onDrawline" onMousePressed="#onDrawline" pickOnBounds="true" preserveRatio="true" />
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <VBox prefHeight="50.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu text="_Arquivo">
+                  <items>
+                        <MenuItem onAction="#onAbrir" text="_Abrir" />
+                        <MenuItem fx:id="onSalvarId" onAction="#onSalvar" text="_Salvar" />
+                        <MenuItem fx:id="onSalvarComoId" onAction="#onSalvarComo" text="Salvar _Como">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem onAction="#onSair" text="Sai_r" />
+                  </items>
+                </Menu>
+                <Menu fx:id="menuTransformacao" text="_Transformações">
+                  <items>
+                    <MenuItem onAction="#onTonsCinza" text="_Tons de Cinza" />
+                        <MenuItem onAction="#onPretoBranco" text="Preto e Branco" />
+                        <MenuItem mnemonicParsing="false" onAction="#onNegativo" text="|Negativo" />
+                        <MenuItem onAction="#onEspelharHorizontal" text="Espelhar Horizolntal" />
+                        <MenuItem mnemonicParsing="false" onAction="#onEspelhaVertical" text="Espelhar Verticalmente" />
+                        <Menu mnemonicParsing="false" text="ImagemJ">
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#onDetectarBorda" text="Detectar Bordas ij" />
+                              <MenuItem mnemonicParsing="false" onAction="#onBlur" text="Blur" />
+                              <MenuItem mnemonicParsing="false" onAction="#onThreshold" text="Threshold" />
+                              <MenuItem mnemonicParsing="false" onAction="#onDilate" text="Dilate" />
+                          </items>
+                        </Menu>
+                  </items>
+                </Menu>
+                <Menu text="_Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onSobre" text="Sobre" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <ToolBar minHeight="72.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: red;">
+              <items>
+                <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btAbrir" style="-fx-background-image: url('open.png'); -fx-background-position: center center; -fx-background-repeat: no-repeat; -fx-background-color: transparent;" />
+                  <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btSalvar" style="-fx-background-image: url('open_save.png'); -fx-background-color: transparent; -fx-background-position: center center; -fx-background-repeat: no-repeat;" />
+                  <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btHorizontal" style="-fx-background-image: url('open_horizontal.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center;" />
+                  <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btVertical" style="-fx-background-image: url('open_vertical.png'); -fx-background-color: transparente; -fx-background-position: center center; -fx-background-repeat: no-repeat;" />
+                  <Button maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#btInfo" style="-fx-background-image: url('open_info.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center center;" />
+                  <Button fx:id="btDegenhard" maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" onAction="#btDesenhar" style="-fx-background-image: url('desenhar.png'); -fx-background-color: transparent; -fx-background-repeat: no-repeat; -fx-background-position: center-center;" />
+              </items>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ToolBar>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>
